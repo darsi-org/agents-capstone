@@ -1,5 +1,8 @@
 # Capstone: a school-helper agent that asks before it acts
 
+
+> **Darsi briefs are short on purpose.** The in-app lesson shows tight numbered clicks. This README keeps the full commands, error fixes, and background for each milestone — open the matching **Milestone N** section when you need detail.
+
 Build an MCP tool server for a made-up timetable, wrap it in a LangGraph agent with traces and limits, add allow-lists and human approval, evaluate with 20 tasks until unapproved writes are zero, then ship a demo and DESIGN.md.
 
 [العربية](README.ar.md)
