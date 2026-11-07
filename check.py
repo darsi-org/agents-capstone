@@ -37,8 +37,8 @@ SPEC = json.loads(r'''{
      "path": "tests/test_tools.py",
      "pattern": "def test_",
      "min": 3,
-     "en": "At least three tool tests",
-     "ar": "ثلاثة اختبارات للأدوات على الأقل"
+     "en": "tests/test_tools.py has at least three tests",
+     "ar": "في tests/test_tools.py ثلاثة اختبارات على الأقل"
     }
    ]
   },
@@ -67,7 +67,7 @@ SPEC = json.loads(r'''{
   {
    "id": "m3",
    "en": "Milestone 3: Guardrails: allow-lists and asking first",
-   "ar": "المرحلة ٣: حواجز: قوايم مسموح والسؤال الأول",
+   "ar": "المرحلة ٣: حواجز الحماية: قوايم السماح والسؤال قبل التصرّف",
    "checks": [
     {
      "type": "regex",

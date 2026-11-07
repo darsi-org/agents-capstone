@@ -8,3 +8,4 @@ secrets.py
 device/secrets.py
 mlruns/
 darsi-check.json
+.pytest_cache/

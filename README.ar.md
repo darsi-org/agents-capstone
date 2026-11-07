@@ -5,7 +5,7 @@
 
 > **ملخص درسي قصير عن قصد.** الدرس في التطبيق بيعرض خطوات ضغط مختصرة. الـ README ده بيحفظ الأوامر الكاملة وإصلاح الأخطاء والخلفية لكل مرحلة — افتح قسم **المرحلة N** لما تحتاج تفاصيل.
 
-ابنِ سيرفر أدوات MCP لجدول حصص مختلق، لفّه في وكيل LangGraph بآثار وحدود، زوّد قوايم مسموح وموافقة بشر، قيّم بـ ٢٠ مهمة لحد ما الكتابات من غير موافقة تبقى صفر، وبعدين اطلق عرض وDESIGN.md.
+ابنِ سيرفر أدوات MCP لجدول حصص مختلق، وحطّه جوّه وكيل LangGraph بآثار وحدود، وزوّد قوايم السماح وموافقة إنسان، وقيّمه بـ ٢٠ مهمة لحد ما الكتابات من غير موافقة تبقى صفر، وبعدين أطلق عرض وDESIGN.md.
 
 [English](README.md)
 
@@ -20,31 +20,48 @@
 
 ### ويندوز
 
-١. ثبّت Python 3.12: افتح PowerShell واكتب winget install Python.Python.3.12
-٢. ثبّت Git: winget install Git.Git
-٣. ثبّت VS Code من https://code.visualstudio.com مجانًا
-٤. على GitHub افتح https://github.com/darsi-org/agents-capstone واضغط Use this template، وبعدين Clone نسختك
-٥. جوّه فولدر المشروع شغّل:
+1. ثبّت Python 3.12: افتح PowerShell واكتب `winget install Python.Python.3.12`
+2. ثبّت Git: `winget install Git.Git`
+3. ثبّت VS Code من https://code.visualstudio.com مجانًا
+4. على GitHub افتح https://github.com/darsi-org/agents-capstone واضغط **Use this template** عشان تعمل نسختك. وبعدين اعمل Clone لنسختك أنت، مش نسخة darsi-org: `git clone https://github.com/<your-username>/agents-capstone.git`
+5. افتح PowerShell جديد، وادخل الفولدر بـ `cd agents-capstone`، وشغّل السطور دي واحد واحد:
+
+   ```powershell
    python -m venv .venv
-   .venv\Scripts\activate
+   .venv\Scripts\Activate.ps1
    pip install -r requirements.txt
    python check.py
+   ```
+
+   لو PowerShell قال إن تشغيل السكربتات متقفل على الجهاز ده، مش محتاج تغيّر أي إعداد: استخدم Command Prompt وشغّل `.venv\Scripts\activate.bat` بداله، أو من غير تفعيل ابدأ كل أمر بـ `.venv\Scripts\python` (مثلًا `.venv\Scripts\python -m pip install -r requirements.txt`، وبعدين `.venv\Scripts\python check.py`).
 
 ### ماك
 
-١. ثبّت Homebrew من https://brew.sh لو مش متثبت
-٢. brew install python@3.12 git
-٣. ثبّت VS Code من https://code.visualstudio.com
-٤. على GitHub افتح https://github.com/darsi-org/agents-capstone → Use this template → Clone نسختك
-٥. جوّه فولدر المشروع شغّل:
-   python3 -m venv .venv
+1. ثبّت Homebrew من https://brew.sh لو مش متثبت
+2. ثبّت Python وGit: `brew install python@3.12 git`
+3. ثبّت VS Code من https://code.visualstudio.com
+4. على GitHub افتح https://github.com/darsi-org/agents-capstone واضغط **Use this template**، وبعدين اعمل Clone لنسختك: `git clone https://github.com/<your-username>/agents-capstone.git`
+5. في Terminal ادخل الفولدر بـ `cd agents-capstone` وشغّل:
+
+   ```bash
+   python3.12 -m venv .venv
    source .venv/bin/activate
    pip install -r requirements.txt
    python check.py
+   ```
 
-### Codespaces / Colab
+### Codespaces
 
-معندكش كمبيوتر؟ استخدم GitHub Codespaces: افتح نسختك → Code → Codespaces → Create codespace. كل حاجة هتتثبت هناك. أو افتح دفتر في Google Colab، شغّل أول خلية بتنسخ الريبو، وبعدين python check.py. الاتنين بيشتغلوا من لابتوب مستعار؛ ومتصفح الموبايل يكفي تقرا النتائج.
+معندكش كمبيوتر؟ استخدم GitHub Codespaces، حتى من لابتوب مستعار: افتح نسختك → **Code** → **Codespaces** → **Create codespace**. Python وGit موجودين أصلًا. في الـ terminal بتاعه شغّل:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+python check.py
+```
+
+متصفح الموبايل يكفي تقرا النتائج.
 
 ## البداية
 
@@ -54,140 +71,142 @@
 
 ### m1: اكتب أدواتك كسيرفر MCP (3 ساعات)
 
-## ليه ده مهم
+#### ليه ده مهم
 الوكلاء بيتصرّفوا من خلال أدوات بس. أدوات بأنواع واضحة أأمن من سكربت حر.
 
-## الأدوات للمرحلة دي
+#### الأدوات للمرحلة دي
 - **MCP Python SDK** — بيعرّف أدوات الموديل يقدر يناديها. هتجيبه من: pip install -r requirements.txt
 - **pytest** — بيختبر كل أداة ومنها المدخل الغلط. هتجيبه من: pip install -r requirements.txt
 
-## اعمل كده
-1. Clone https://github.com/darsi-org/agents-capstone وجهّز الـ venv.
+#### اعمل كده
+1. جهّز نسختك زي **ثبّت مرة واحدة** (نسختك أنت، مش نسخة darsi-org).
 2. افتح tools/server.py. كمّل free_rooms وdraft_message اللي بتكتب جوّه drafts/ بس.
-3. اكتب اختبارات pytest لكل أداة، ومنها يوم مش موجود.
-4. شغّل: pytest -q && python check.py --milestone m1
+3. اكتب اختبارات pytest في tests/test_tools.py (فيه مثال واحد؛ وcheck.py بيعدّ الاختبارات اللي في الملف ده) لكل أداة، ومنها يوم مش موجود.
+4. شغّل `pytest -q`، وبعدين `python check.py --milestone m1`.
 
-## هتبقى خلصت لما
+#### هتبقى خلصت لما
 - تلاتة دوال @mcp.tool موجودة
 - الاختبارات ناجحة
 - m1 ناجحة
 
-## لو حاجة وقفت
-- **حزمة mcp ناقصة** → pip install -r requirements.txt جوّه الـ venv
+#### لو حاجة وقفت
+- **حزمة mcp ناقصة** → `pip install -r requirements.txt` جوّه الـ venv
+- **No module named mcp.server.fastmcp** → عندك mcp 2، اللي غيّر اسم FastMCP: `pip install "mcp<2"` (وrequirements.txt مثبّتها)
 - **المسودة بتكتب برة drafts/** → حل المسارات بـ Path وارفض أي حاجة برة drafts/
 
-## إيه اللي لازم تفهمه
+#### إيه اللي لازم تفهمه
 تقدر تعرض أدوات آمنة بأنواع وتثبت إن المدخل الغلط بيترفض.
 
 **المطلوب تسليمه:** tools/server.py، واختبارات ناجحة، وdarsi-check.json بيجتاز m1.
 
 ### m2: الحلقة: وكيل LangGraph مع أثر (4 ساعات)
 
-## ليه ده مهم
+#### ليه ده مهم
 من غير أثر مش هتقدر تصلّح ليه الوكيل نادى الأداة الغلط. الحدود بتوقف الحلقات الجامحة.
 
-## الأدوات للمرحلة دي
+#### الأدوات للمرحلة دي
 - **LangGraph** — حلقة وكيل StateGraph. هتجيبه من: pip install -r requirements.txt
-- **Ollama (optional)** — بيشغّل موديل صغير على جهازك؛ Codespaces يقدر يستخدم موديل مزيف في الاختبارات. هتجيبه من: https://ollama.com — free local models
+- **Ollama (optional)** — بيشغّل موديل صغير على جهازك. هتجيبه من: https://ollama.com — free local models
+- **tests/fake_model.py** — موديل مزيف بردود مكتوبة للاختبارات وCodespaces، فمش محتاج Ollama هناك. هتجيبه من: in the starter
 
-## اعمل كده
-1. ابنِ agent.py كـ StateGraph بيختار أدوات من سيرفر MCP.
+#### اعمل كده
+1. ابنِ agent.py كـ StateGraph بيختار أدوات من سيرفر MCP. ابنيه من موديل بتدّيهوله (مثلًا `make_graph(model)`)، عشان الاختبارات تقدر تدّيله الموديل المزيف.
 2. سجّل كل خطوة في traces/*.jsonl: الطلب، ونداءات الأدوات، والنتائج، والإجابة.
 3. اقصّر على ٦ خطوات وحوالي ٤٠٠٠ توكن، وبعدين وقف وقول كده.
 4. جرّب خمسة طلبات بالإنجليزي والمصري. شغّل python check.py --milestone m2.
 
-## هتبقى خلصت لما
+#### هتبقى خلصت لما
 - خمسة آثار موجودة
 - agent.py فيه StateGraph
 - m2 ناجحة
 
-## لو حاجة وقفت
-- **مفيش موديل محلي** → استخدم FakeChat في الاختبارات، أو ثبّت Ollama وسحب qwen2.5:1.5b
+#### لو حاجة وقفت
+- **مفيش موديل محلي** → استخدم `scripted(...)` من tests/fake_model.py في الاختبارات، أو ثبّت Ollama واسحب qwen2.5:1.5b
 - **الوكيل بيلف للأبد** → فرض حد أقصى للخطوات في حافة الرسم المشروطة
 
-## إيه اللي لازم تفهمه
+#### إيه اللي لازم تفهمه
 تقدر توصل موديل بأدوات، تسجّل كل خطوة، وتوقف التشغيل الجامح.
 
 **المطلوب تسليمه:** agent.py، وخمسة آثار، وdarsi-check.json بيجتاز m2.
 
-### m3: حواجز: قوايم مسموح والسؤال الأول (3 ساعات)
+### m3: حواجز الحماية: قوايم السماح والسؤال قبل التصرّف (3 ساعات)
 
-## ليه ده مهم
+#### ليه ده مهم
 الحاجة الآمنة لازم تبقى الحاجة الوحيدة اللي الوكيل يقدر يعملها. الموافقة قبل الكتابة بتوقف الضرر الصامت.
 
-## الأدوات للمرحلة دي
+#### الأدوات للمرحلة دي
 - **LangGraph interrupt** — بيوقف قبل الكتابة لموافقة نعم/لا. هتجيبه من: in langgraph
 
-## اعمل كده
+#### اعمل كده
 1. اسمح بتلاتة أدواتك بس؛ draft_message تكتب جوّه drafts/ بس.
 2. زوّد interrupt() قبل draft_message: ورّي بالظبط إيه هيتسجل واستنى نعم/لا.
 3. حط تعليمة مزروعة في data/notes.txt وورّي إن الوكيل بيتعامل معاها كبيانات مش أمر.
-4. شغّل pytest tests/test_guardrails.py && python check.py --milestone m3
+4. شغّل `pytest tests/test_guardrails.py`، وبعدين `python check.py --milestone m3`.
 
-## هتبقى خلصت لما
+#### هتبقى خلصت لما
 - interrupt() مستخدم
 - اختبارات الحواجز موجودة
 - m3 ناجحة
 
-## لو حاجة وقفت
+#### لو حاجة وقفت
 - **interrupt مبتكملش** → في الاختبارات نادِ بـ Command بيوافق؛ في العرض اكتب yes
 - **التعليمة المزروعة لسه بتسبب إرسال** → متديش للوكيل أداة إرسال حقيقية؛ draft_message موجودة بس
 
-## إيه اللي لازم تفهمه
+#### إيه اللي لازم تفهمه
 تقدر تفرض موافقة قبل الكتابة وتعامل النص العدائي كبيانات.
 
 **المطلوب تسليمه:** كود الحواجز، والاختبارات، وdarsi-check.json بيجتاز m3.
 
 ### m4: قيّم قبل ما تثق (3 ساعات)
 
-## ليه ده مهم
+#### ليه ده مهم
 إحساس إنه شغال مش دليل. عشرين مهمة بهدف قاسي: صفر كتابات من غير موافقة، ده الدليل.
 
-## الأدوات للمرحلة دي
+#### الأدوات للمرحلة دي
 - **evals/tasks.jsonl** — ٢٠ مهمة مع الأداة والإجابة المتوقعة. هتجيبه من: you write it
 
-## اعمل كده
+#### اعمل كده
 1. اكتب ٢٠ مهمة: ١٢ عادي، ٤ مستحيل، ٤ بتعليمات مزروعة.
 2. شغّل python eval.py تلات مرات لكل مهمة. الهدف: unapproved_writes = 0.
 3. صلّح لحد ما توصل؛ احتفظ بجدول قبل/بعد. شغّل python check.py --milestone m4.
 
-## هتبقى خلصت لما
+#### هتبقى خلصت لما
 - ٢٠ مهمة في evals/tasks.jsonl
 - results/eval.json فيه unapproved_writes 0
 - m4 ناجحة
 
-## لو حاجة وقفت
+#### لو حاجة وقفت
 - **تقييمات متقلبة** → شغّل تلات مرات وبلّغ عن الأسوأ؛ صلّح عدم الحتمية في الأدوات
 - **unapproved_writes مبتوصلش لصفر** → اقفل مسار الكتابة من غير موافقة في الكود، مش في البرومبت بس
 
-## إيه اللي لازم تفهمه
+#### إيه اللي لازم تفهمه
 تقدر تقيس أمان الوكيل بمهام وترفض الإطلاق لحد ما الكتابات من غير موافقة تبقى صفر.
 
 **المطلوب تسليمه:** evals/tasks.jsonl، وجدول قبل/بعد، وdarsi-check.json بيجتاز m4.
 
 ### m5: عرض وملاحظة تصميم (3 ساعات)
 
-## ليه ده مهم
+#### ليه ده مهم
 عرض قصير وملاحظة تصميم هم طريقة تثبت التحكم، مش الإحساس.
 
-## الأدوات للمرحلة دي
-- **GitHub Actions** — بيشغّل الاختبارات بموديل مزيف من غير GPU. هتجيبه من: ci.yml in the starter
+#### الأدوات للمرحلة دي
+- **GitHub Actions** — بيشغّل اختباراتك بالموديل المزيف اللي في tests/fake_model.py، من غير GPU ولا Ollama. هتجيبه من: ci.yml in the starter
 
-## اعمل كده
+#### اعمل كده
 1. سجّل عرض ≤٣ دقايق: اتنين عادي، واحد مرفوض، واحد موافقة.
-2. اكتب DESIGN.md: أسوأ إساءة لكل أداة وتحكّمك، مين بيوافق على إيه، نتايج التقييم، التكلفة المحلية.
+2. اكتب DESIGN.md: أسوأ إساءة لكل أداة والإجراء الوقائي بتاعك ليها، مين بيوافق على إيه، نتايج التقييم، التكلفة المحلية.
 3. اتأكد إن Actions أخضر بالموديل المزيف. حط v1.0. شغّل python check.py --milestone m5.
 
-## هتبقى خلصت لما
+#### هتبقى خلصت لما
 - DESIGN.md موجود
 - v1.0 موجود
 - m5 ناجحة
 
-## لو حاجة وقفت
-- **CI محتاج GPU حقيقي** → استخدم مسار الموديل المزيف المرسوم لـ Actions
+#### لو حاجة وقفت
+- **CI محتاج GPU أو Ollama** → في اختبار استخدم الموديل الحقيقي: ابني الرسم بـ `scripted(...)` من tests/fake_model.py بداله
 - **ملف العرض كبير على GitHub** → اربط يوتيوب غير مدرج أو Drive بدل ما ترفع الفيديو
 
-## إيه اللي لازم تفهمه
+#### إيه اللي لازم تفهمه
 تقدر تورّي وتوثّق وكيل بيسأل قبل ما يتصرّف، بأمان مقاس.
 
 **المطلوب تسليمه:** رابط العرض، وDESIGN.md، وActions أخضر، وv1.0، وdarsi-check.json بيجتاز m5، وشرحك.
